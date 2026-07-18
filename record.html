@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="سجل توظيف شخصي — ملخص معلومات من خطاب على رأس العمل">
+  <meta name="theme-color" content="#374a35">
+  <title>سجل توظيف — نسخة شخصية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1f2a24;
+      --ink-soft: #55624f;
+      --paper: #f6f3ea;
+      --surface: #fffdf8;
+      --moss: #5c6f5a;
+      --moss-deep: #374a35;
+      --clay: #a9633f;
+      --line: rgba(31, 42, 36, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Tajawal', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 48px 20px 64px;
+    }
+
+    ::selection {
+      background: rgba(92, 111, 90, 0.25);
+    }
+
+    .sheet {
+      width: 100%;
+      max-width: 720px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      box-shadow:
+        0 1px 2px rgba(31, 42, 36, 0.05),
+        0 12px 32px rgba(31, 42, 36, 0.07);
+      overflow: hidden;
+      align-self: flex-start;
+    }
+
+    .band {
+      background: var(--moss-deep);
+      color: var(--paper);
+      padding: 28px 32px 24px;
+      position: relative;
+    }
+
+    .band::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4px;
+      background: repeating-linear-gradient(90deg, var(--clay) 0 18px, transparent 18px 26px);
+    }
+
+    .band-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .band h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 900;
+      text-wrap: balance;
+    }
+
+    .copy-badge {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--paper);
+      border: 1px solid rgba(246, 243, 234, 0.4);
+      border-radius: 999px;
+      padding: 3px 12px;
+      white-space: nowrap;
+    }
+
+    .band p.sub {
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: #d5d4c6;
+    }
+
+    .body {
+      padding: 28px 32px 8px;
+    }
+
+    section {
+      margin-bottom: 28px;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--moss-deep);
+      margin: 0 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 28px;
+      margin: 0;
+    }
+
+    @media (max-width: 520px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .band,
+      .body {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+      .footer {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+    }
+
+    .field dt {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      margin: 0 0 4px;
+    }
+
+    .field dd {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .field dd.num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .letter-box {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 20px 22px;
+      font-size: 15px;
+      line-height: 1.95;
+      max-width: 68ch;
+    }
+
+    .letter-box p {
+      margin: 0 0 12px;
+      text-wrap: pretty;
+    }
+
+    .letter-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px 24px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      border-top: 1px dashed var(--line);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .print-btn {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--paper);
+      background: var(--moss-deep);
+      border: none;
+      border-radius: 4px;
+      padding: 8px 18px;
+      cursor: pointer;
+      transition: background-color 160ms cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .print-btn:hover {
+      background: var(--moss);
+    }
+
+    .print-btn:focus-visible {
+      outline: 2px solid var(--clay);
+      outline-offset: 2px;
+    }
+
+    .print-btn:active {
+      transform: translateY(1px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .print-btn {
+        transition: none;
+      }
+
+      .print-btn:active {
+        transform: none;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        padding: 0;
+        display: block;
+      }
+
+      .sheet {
+        max-width: none;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .band {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .print-btn {
+        display: none;
+      }
+    }
+
+    @page {
+      margin: 14mm;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="sheet">
+    <header class="band">
+      <div class="band-row">
+        <h1>سجل توظيف</h1>
+        <span class="copy-badge">نسخة شخصية</span>
+      </div>
+      <p class="sub">معلومات من خطاب صادر بتاريخ 22 مايو 2026 م</p>
+    </header>
+
+    <div class="body">
+      <section aria-labelledby="employee-heading">
+        <h2 class="section-label" id="employee-heading">بيانات الموظف</h2>
+        <dl class="grid">
+          <div class="field">
+            <dt>الاسم</dt>
+            <dd>محمد عبد العظيم إبراهيم وسية</dd>
+          </div>
+          <div class="field">
+            <dt>رقم الإقامة</dt>
+            <dd class="num">2279542829</dd>
+          </div>
+          <div class="field">
+            <dt>الجنسية</dt>
+            <dd>مصري</dd>
+          </div>
+          <div class="field">
+            <dt>المهنة</dt>
+            <dd>مصمم دعاية</dd>
+          </div>
+          <div class="field">
+            <dt>نهاية العقد</dt>
+            <dd>29 أغسطس 2027 م</dd>
+          </div>
+          <div class="field">
+            <dt>الموضوع</dt>
+            <dd>خطاب على رأس العمل</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="employer-heading">
+        <h2 class="section-label" id="employer-heading">بيانات جهة العمل</h2>
+        <dl class="grid">
+          <div class="field">
+            <dt>الجهة</dt>
+            <dd>مؤسسة فهد الشمري للنقليات</dd>
+          </div>
+          <div class="field">
+            <dt>المدينة</dt>
+            <dd>الجبيل — المنطقة الشرقية</dd>
+          </div>
+          <div class="field">
+            <dt>رقم السجل التجاري</dt>
+            <dd class="num">2055007543</dd>
+          </div>
+          <div class="field">
+            <dt>رقم الاشتراك</dt>
+            <dd class="num">105238</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section aria-labelledby="letter-heading">
+        <h2 class="section-label" id="letter-heading">نص الخطاب</h2>
+        <div class="letter-box">
+          <p>نفيدكم نحن مؤسسة فهد الشمري للنقليات بأن السيد/ محمد عبد العظيم إبراهيم وسية، مصري الجنسية، الذي يحمل إقامة
+            رقم <span dir="ltr">2279542829</span>، يعمل طرفنا في مهنة مصمم دعاية، وما زال على رأس العمل حتى نهاية العقد
+            في تاريخ 29 أغسطس 2027 م.</p>
+          <p>وقد تم تحرير هذا الخطاب بناءً على رغبة الموظف لتقديمه إلى جهة عمله دون أدنى مسؤولية على المؤسسة.</p>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <span> 22 مايو 2026</span>
+      <button class="print-btn" type="button" onclick="window.print()">طباعة / حفظ PDF</button>
+    </footer>
+  </main>
+
+</body>
+
+</html>
