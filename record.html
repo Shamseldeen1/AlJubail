@@ -5,23 +5,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="سجل توظيف شخصي — ملخص معلومات من خطاب على رأس العمل">
-  <meta name="theme-color" content="#374a35">
+  <meta name="theme-color" content="#2e5843">
   <title>سجل توظيف — نسخة شخصية</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap"
     rel="stylesheet">
   <style>
     :root {
-      --ink: #1f2a24;
-      --ink-soft: #55624f;
-      --paper: #f6f3ea;
-      --surface: #fffdf8;
-      --moss: #5c6f5a;
-      --moss-deep: #374a35;
-      --clay: #a9633f;
-      --line: rgba(31, 42, 36, 0.14);
+      --bg: oklch(0.985 0.002 155);
+      --surface: #ffffff;
+      --ink: oklch(0.24 0.02 155);
+      --ink-muted: oklch(0.45 0.02 155);
+      --accent: oklch(0.42 0.08 155);
+      --accent-deep: oklch(0.34 0.07 155);
+      --hairline: oklch(0.24 0.02 155 / 0.14);
+      --hairline-soft: oklch(0.24 0.02 155 / 0.3);
     }
 
     * {
@@ -30,198 +30,234 @@
 
     body {
       margin: 0;
-      background: var(--paper);
+      background: var(--bg);
       color: var(--ink);
-      font-family: 'Tajawal', sans-serif;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 48px 20px 64px;
+      padding: 56px 20px 64px;
     }
 
     ::selection {
-      background: rgba(92, 111, 90, 0.25);
+      background: oklch(0.42 0.08 155 / 0.18);
     }
 
     .sheet {
       width: 100%;
-      max-width: 720px;
+      max-width: 680px;
       background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      box-shadow:
-        0 1px 2px rgba(31, 42, 36, 0.05),
-        0 12px 32px rgba(31, 42, 36, 0.07);
-      overflow: hidden;
+      border: 1px solid var(--hairline);
+      box-shadow: 0 1px 3px oklch(0.24 0.02 155 / 0.04);
+      padding: 52px 56px 40px;
       align-self: flex-start;
     }
 
-    .band {
-      background: var(--moss-deep);
-      color: var(--paper);
-      padding: 28px 32px 24px;
-      position: relative;
-    }
+    /* ---------- Header ---------- */
 
-    .band::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 4px;
-      background: repeating-linear-gradient(90deg, var(--clay) 0 18px, transparent 18px 26px);
-    }
-
-    .band-row {
+    .title-row {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
-    .band h1 {
+    h1 {
       margin: 0;
-      font-size: 26px;
-      font-weight: 900;
+      font-size: 27px;
+      font-weight: 700;
       text-wrap: balance;
     }
 
     .copy-badge {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 500;
-      color: var(--paper);
-      border: 1px solid rgba(246, 243, 234, 0.4);
+      color: var(--ink-muted);
+      border: 1px solid var(--hairline);
       border-radius: 999px;
-      padding: 3px 12px;
+      padding: 4px 14px;
       white-space: nowrap;
     }
 
-    .band p.sub {
-      margin: 8px 0 0;
-      font-size: 14px;
-      color: #d5d4c6;
+    .title-rule {
+      width: 56px;
+      height: 3px;
+      background: var(--accent);
+      border: none;
+      margin: 18px 0 14px;
     }
 
-    .body {
-      padding: 28px 32px 8px;
+    .meta {
+      margin: 0;
+      font-size: 14px;
+      color: var(--ink-muted);
     }
+
+    /* ---------- Sections ---------- */
 
     section {
-      margin-bottom: 28px;
+      margin-top: 44px;
     }
 
-    .section-label {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--moss-deep);
-      margin: 0 0 14px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px 28px;
-      margin: 0;
-    }
-
-    @media (max-width: 520px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .band,
-      .body {
-        padding-right: 20px;
-        padding-left: 20px;
-      }
-
-      .footer {
-        padding-right: 20px;
-        padding-left: 20px;
-      }
-    }
-
-    .field dt {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--ink-soft);
-      margin: 0 0 4px;
-    }
-
-    .field dd {
-      margin: 0;
-      font-size: 16px;
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      font-size: 17px;
       font-weight: 700;
       color: var(--ink);
     }
 
-    .field dd.num {
+    h2::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ---------- Dotted-leader field rows ---------- */
+
+    dl {
+      margin: 0;
+      display: grid;
+      row-gap: 15px;
+    }
+
+    .row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .row dt {
+      order: 1;
+      flex-shrink: 0;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-muted);
+    }
+
+    .row::after {
+      content: "";
+      order: 2;
+      flex: 1;
+      min-width: 32px;
+      border-bottom: 1px dotted var(--hairline-soft);
+      align-self: baseline;
+      transform: translateY(-4px);
+    }
+
+    .row dd {
+      order: 3;
+      margin: 0;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    .row dd.num {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 15px;
       font-weight: 500;
       letter-spacing: 0.03em;
     }
 
-    .letter-box {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 3px;
-      padding: 20px 22px;
-      font-size: 15px;
-      line-height: 1.95;
+    /* ---------- Letter text ---------- */
+
+    .letter {
+      margin: 0;
+      padding: 4px 22px 4px 0;
+      border-right: 1px solid var(--hairline);
+      font-size: 15.5px;
+      line-height: 2;
       max-width: 68ch;
     }
 
-    .letter-box p {
-      margin: 0 0 12px;
+    .letter p {
+      margin: 0 0 14px;
       text-wrap: pretty;
     }
 
-    .letter-box p:last-child {
+    .letter p:last-child {
       margin-bottom: 0;
     }
 
-    .footer {
+    /* ---------- Footer ---------- */
+
+    footer {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid var(--hairline);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 16px 32px 24px;
-      font-size: 13px;
-      color: var(--ink-soft);
-      border-top: 1px dashed var(--line);
+      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 14px;
+    }
+
+    .footer-date {
+      font-size: 13px;
+      color: var(--ink-muted);
     }
 
     .print-btn {
-      font-family: 'Tajawal', sans-serif;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 14px;
       font-weight: 700;
-      color: var(--paper);
-      background: var(--moss-deep);
+      color: #ffffff;
+      background: var(--accent);
       border: none;
-      border-radius: 4px;
-      padding: 8px 18px;
+      border-radius: 3px;
+      min-height: 44px;
+      padding: 10px 22px;
       cursor: pointer;
       transition: background-color 160ms cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     .print-btn:hover {
-      background: var(--moss);
+      background: var(--accent-deep);
     }
 
     .print-btn:focus-visible {
-      outline: 2px solid var(--clay);
+      outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
 
     .print-btn:active {
       transform: translateY(1px);
     }
+
+    /* ---------- Responsive ---------- */
+
+    @media (max-width: 560px) {
+      body {
+        padding: 24px 12px 40px;
+      }
+
+      .sheet {
+        padding: 32px 24px 28px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .row {
+        display: block;
+      }
+
+      .row::after {
+        display: none;
+      }
+
+      .row dd {
+        margin-top: 3px;
+        text-align: right;
+      }
+    }
+
+    /* ---------- Motion ---------- */
 
     @media (prefers-reduced-motion: reduce) {
       .print-btn {
@@ -233,6 +269,8 @@
       }
     }
 
+    /* ---------- Print ---------- */
+
     @media print {
       body {
         background: #fff;
@@ -243,17 +281,22 @@
       .sheet {
         max-width: none;
         border: none;
-        border-radius: 0;
         box-shadow: none;
+        padding: 0;
       }
 
-      .band {
+      .title-rule,
+      h2::before {
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
       }
 
       .print-btn {
         display: none;
+      }
+
+      footer {
+        border-top-color: #ccc;
       }
     }
 
@@ -266,80 +309,79 @@
 <body>
 
   <main class="sheet">
-    <header class="band">
-      <div class="band-row">
+    <header>
+      <div class="title-row">
         <h1>سجل توظيف</h1>
         <span class="copy-badge">نسخة شخصية</span>
       </div>
-      <p class="sub">معلومات من خطاب صادر بتاريخ 22 مايو 2026 م</p>
+      <hr class="title-rule" aria-hidden="true">
+      <p class="meta">معلومات من خطاب صادر بتاريخ 22 مايو 2026 م</p>
     </header>
 
-    <div class="body">
-      <section aria-labelledby="employee-heading">
-        <h2 class="section-label" id="employee-heading">بيانات الموظف</h2>
-        <dl class="grid">
-          <div class="field">
-            <dt>الاسم</dt>
-            <dd>محمد عبد العظيم إبراهيم وسية</dd>
-          </div>
-          <div class="field">
-            <dt>رقم الإقامة</dt>
-            <dd class="num">2279542829</dd>
-          </div>
-          <div class="field">
-            <dt>الجنسية</dt>
-            <dd>مصري</dd>
-          </div>
-          <div class="field">
-            <dt>المهنة</dt>
-            <dd>مصمم دعاية</dd>
-          </div>
-          <div class="field">
-            <dt>نهاية العقد</dt>
-            <dd>29 أغسطس 2027 م</dd>
-          </div>
-          <div class="field">
-            <dt>الموضوع</dt>
-            <dd>خطاب على رأس العمل</dd>
-          </div>
-        </dl>
-      </section>
-
-      <section aria-labelledby="employer-heading">
-        <h2 class="section-label" id="employer-heading">بيانات جهة العمل</h2>
-        <dl class="grid">
-          <div class="field">
-            <dt>الجهة</dt>
-            <dd>مؤسسة فهد الشمري للنقليات</dd>
-          </div>
-          <div class="field">
-            <dt>المدينة</dt>
-            <dd>الجبيل — المنطقة الشرقية</dd>
-          </div>
-          <div class="field">
-            <dt>رقم السجل التجاري</dt>
-            <dd class="num">2055007543</dd>
-          </div>
-          <div class="field">
-            <dt>رقم الاشتراك</dt>
-            <dd class="num">105238</dd>
-          </div>
-        </dl>
-      </section>
-
-      <section aria-labelledby="letter-heading">
-        <h2 class="section-label" id="letter-heading">نص الخطاب</h2>
-        <div class="letter-box">
-          <p>نفيدكم نحن مؤسسة فهد الشمري للنقليات بأن السيد/ محمد عبد العظيم إبراهيم وسية، مصري الجنسية، الذي يحمل إقامة
-            رقم <span dir="ltr">2279542829</span>، يعمل طرفنا في مهنة مصمم دعاية، وما زال على رأس العمل حتى نهاية العقد
-            في تاريخ 29 أغسطس 2027 م.</p>
-          <p>وقد تم تحرير هذا الخطاب بناءً على رغبة الموظف لتقديمه إلى جهة عمله دون أدنى مسؤولية على المؤسسة.</p>
+    <section aria-labelledby="employee-heading">
+      <h2 id="employee-heading">بيانات الموظف</h2>
+      <dl>
+        <div class="row">
+          <dt>الاسم</dt>
+          <dd>محمد عبد العظيم إبراهيم وسية</dd>
         </div>
-      </section>
-    </div>
+        <div class="row">
+          <dt>رقم الإقامة</dt>
+          <dd class="num">2279542829</dd>
+        </div>
+        <div class="row">
+          <dt>الجنسية</dt>
+          <dd>مصري</dd>
+        </div>
+        <div class="row">
+          <dt>المهنة</dt>
+          <dd>مصمم دعاية</dd>
+        </div>
+        <div class="row">
+          <dt>نهاية العقد</dt>
+          <dd>29 أغسطس 2027 م</dd>
+        </div>
+        <div class="row">
+          <dt>الموضوع</dt>
+          <dd>خطاب على رأس العمل</dd>
+        </div>
+      </dl>
+    </section>
 
-    <footer class="footer">
-      <span> 22 مايو 2026</span>
+    <section aria-labelledby="employer-heading">
+      <h2 id="employer-heading">بيانات جهة العمل</h2>
+      <dl>
+        <div class="row">
+          <dt>الجهة</dt>
+          <dd>مؤسسة فهد الشمري للنقليات</dd>
+        </div>
+        <div class="row">
+          <dt>المدينة</dt>
+          <dd>الجبيل — المنطقة الشرقية</dd>
+        </div>
+        <div class="row">
+          <dt>رقم السجل التجاري</dt>
+          <dd class="num">2055007543</dd>
+        </div>
+        <div class="row">
+          <dt>رقم الاشتراك</dt>
+          <dd class="num">105238</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section aria-labelledby="letter-heading">
+      <h2 id="letter-heading">نص الخطاب</h2>
+      <div class="letter">
+        <p>نفيدكم نحن مؤسسة فهد الشمري للنقليات بأن السيد/ محمد عبد العظيم إبراهيم وسية، مصري الجنسية، الذي يحمل إقامة
+          رقم <span dir="ltr">2279542829</span>، يعمل طرفنا في مهنة مصمم دعاية، وما زال على رأس العمل حتى نهاية العقد
+          في تاريخ 29 أغسطس 2027 م.</p>
+        <p>وقد تم تحرير هذا الخطاب بناءً على رغبة الموظف لتقديمه إلى جهة عمله دون أدنى مسؤولية على المؤسسة.</p>
+      </div>
+    </section>
+
+    <footer>
+      <span class="footer-date">22 مايو 2026</span>
       <button class="print-btn" type="button" onclick="window.print()">طباعة / حفظ PDF</button>
     </footer>
   </main>
