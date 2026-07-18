@@ -80,6 +80,33 @@
       white-space: nowrap;
     }
 
+    .logo-slots {
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Placeholder until the real logos are ready — replace each
+       .logo-slot with an <img class="logo-img"> when available */
+    .logo-slot {
+      width: 64px;
+      height: 64px;
+      border: 1.5px dashed var(--hairline-soft);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      user-select: none;
+    }
+
+    .logo-img {
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+    }
+
     .title-rule {
       width: 56px;
       height: 3px;
@@ -311,11 +338,51 @@
   <main class="sheet">
     <header>
       <div class="title-row">
-        <h1>سجل توظيف</h1>
+        <h1>
+          المملكة العربية السعودية<br>
+          المنطقة الشرقية<br>
+          بوابة أعمالي<br>
+          خدمات التصديق الإلكتروني
+        </h1>
+        <div class="logo-slots">
+          <img class="logo-img" src="1.jpeg" alt="شعار المؤسسة">
+          <img class="logo-img" src="2.jpeg" alt="شعار الجهة">
+        </div>
+
       </div>
       <hr class="title-rule" aria-hidden="true">
       <p class="meta">معلومات من خطاب صادر بتاريخ 22 مايو 2026 م</p>
     </header>
+
+    <section aria-labelledby="employer-heading">
+      <h2 id="employer-heading">بيانات جهة العمل</h2>
+      <dl>
+        <div class="row">
+          <dt>الجهة</dt>
+          <dd>مؤسسة فهد الشمري للنقليات</dd>
+        </div>
+        <div class="row">
+          <dt>المدينة</dt>
+          <dd>الجبيل — المنطقة الشرقية</dd>
+        </div>
+        <div class="row">
+          <dt>رقم السجل التجاري</dt>
+          <dd class="num">2055007543</dd>
+        </div>
+        <div class="row">
+          <dt>رقم الاشتراك</dt>
+          <dd class="num">1262709</dd>
+        </div>
+        <div class="row">
+          <dt>رقم موحد</dt>
+          <dd class="num">7053737593</dd>
+        </div>
+        <div class="row">
+          <dt>تاريخ انتهاء الاشتراك</dt>
+          <dd class="num" dir="ltr">2027/8/29</dd>
+        </div>
+      </dl>
+    </section>
 
     <section aria-labelledby="employee-heading">
       <h2 id="employee-heading">بيانات الموظف</h2>
@@ -343,28 +410,6 @@
         <div class="row">
           <dt>الموضوع</dt>
           <dd>خطاب على رأس العمل</dd>
-        </div>
-      </dl>
-    </section>
-
-    <section aria-labelledby="employer-heading">
-      <h2 id="employer-heading">بيانات جهة العمل</h2>
-      <dl>
-        <div class="row">
-          <dt>الجهة</dt>
-          <dd>مؤسسة فهد الشمري للنقليات</dd>
-        </div>
-        <div class="row">
-          <dt>المدينة</dt>
-          <dd>الجبيل — المنطقة الشرقية</dd>
-        </div>
-        <div class="row">
-          <dt>رقم السجل التجاري</dt>
-          <dd class="num">2055007543</dd>
-        </div>
-        <div class="row">
-          <dt>رقم الاشتراك</dt>
-          <dd class="num">105238</dd>
         </div>
       </dl>
     </section>
